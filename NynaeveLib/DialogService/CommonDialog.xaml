@@ -1,0 +1,52 @@
+﻿<Window x:Class="NynaeveLib.DialogService.CommonDialog"
+        Name="NynaeveCommonDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:converters="clr-namespace:NynaeveLib.Enumerations.Converters"
+        Title="{Binding Title}"
+        SizeToContent="WidthAndHeight"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <converters:BoolToVisCollapsedVisibilityConverter x:Key="visibilityConverter"/>
+        </ResourceDictionary>
+    </Window.Resources>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <TextBlock Grid.Row="0"
+               Text="{Binding Message}"/>
+
+    <UniformGrid Columns="{Binding ButtonCount}"
+                 Grid.Row="1">
+      <Button Command="{Binding OkCommand}"
+              Visibility="{Binding OkAvailable, Converter={StaticResource visibilityConverter}}"
+              Content="Ok"
+              CommandParameter="{Binding ElementName=NynaeveCommonDialog}"/>
+
+      <Button Command="{Binding YesCommand}"
+              Visibility="{Binding YesAvailable, Converter={StaticResource visibilityConverter}}"
+              Content="Yes"
+              CommandParameter="{Binding ElementName=NynaeveCommonDialog}"/>
+
+      <Button Command="{Binding NoCommand}"
+              Visibility="{Binding NoAvailable, Converter={StaticResource visibilityConverter}}"
+              Content="No"
+              CommandParameter="{Binding ElementName=NynaeveCommonDialog}"/>
+
+      <Button Command="{Binding CancelCommand}"
+              Visibility="{Binding CancelAvailable, Converter={StaticResource visibilityConverter}}"
+              Content="Cancel"
+              CommandParameter="{Binding ElementName=NynaeveCommonDialog}"/>
+
+    </UniformGrid>
+  </Grid>
+</Window>
