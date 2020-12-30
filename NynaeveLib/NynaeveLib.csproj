@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="Commands\CommonCommand.cs" />
     <Compile Include="Commands\CommonCommandLambda.cs" />
+    <Compile Include="Commands\IIndexCommand.cs" />
+    <Compile Include="Commands\IndexCommand.cs" />
     <Compile Include="Commands\SimpleCommand.cs" />
     <Compile Include="Converters\IntThresholdToVisibiltyConverter.cs" />
     <Compile Include="Converters\StringToVisibiltyConverter.cs" />
