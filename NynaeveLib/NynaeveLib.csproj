@@ -80,6 +80,8 @@
     <Compile Include="ViewModel\DialogViewModelBase.cs" />
     <Compile Include="ViewModel\IViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="XML\XmlException.cs" />
+    <Compile Include="XML\XmlFileIo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="DialogService\CommonDialog.xaml">
