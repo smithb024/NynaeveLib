@@ -38,7 +38,7 @@
             {
                 XmlException exception =
                     new XmlException(
-                        $"XML Serialisation: Directory not found: {ex}",
+                        $"XML Serialisation: File not found: {ex}",
                         ex);
                 throw exception;
             }
@@ -73,12 +73,63 @@
           string filename)
         {
             XmlSerializer serialiser = new XmlSerializer(typeof(T));
+            Stream stream = null;
 
-            using (Stream stream = File.Create(filename))
+            try
             {
+                stream = File.Create(filename);
+
                 serialiser.Serialize(
                   stream,
                   root);
+            }
+            catch (InvalidOperationException ex)
+            {
+                XmlException exception =
+                    new XmlException(
+                        $"XML Serialisation: An error occurred during serialisation: {ex}",
+                        ex);
+                throw exception;
+            }
+            catch (ArgumentException ex)
+            {
+                XmlException exception =
+                    new XmlException(
+                        $"XML Serialisation: An argument is invalid: {ex}",
+                        ex);
+                throw exception;
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                XmlException exception =
+                    new XmlException(
+                        $"XML Serialisation: Directory not found: {ex}",
+                        ex);
+                throw exception;
+            }
+            catch (IOException ex)
+            {
+                XmlException exception =
+                    new XmlException(
+                        $"XML Serialisation: An I/O error has occurred: {ex}",
+                        ex);
+                throw exception;
+            }
+            catch (Exception ex)
+            {
+                XmlException exception =
+                    new XmlException(
+                        $"XML Serialisation: Generic Exception: {ex}",
+                        ex);
+                throw exception;
+            }
+            finally
+            {
+                if (stream != null)
+                {
+                    stream.Close();
+                    stream.Dispose();
+                }
             }
         }
     }
