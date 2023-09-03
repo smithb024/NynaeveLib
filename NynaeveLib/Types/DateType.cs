@@ -97,15 +97,12 @@
         /// </summary>
         public int Day
         {
-            get
-            {
-                return day;
-            }
+            get => day;
 
             set
             {
                 day = value;
-                RaisePropertyChangedEvent("Day");
+                this.OnPropertyChanged(nameof(this.Day));
             }
         }
 
@@ -114,15 +111,12 @@
         /// </summary>
         public int Month
         {
-            get
-            {
-                return month;
-            }
+            get => month;
 
             set
             {
                 month = value;
-                RaisePropertyChangedEvent("Month");
+                this.OnPropertyChanged(nameof(this.month));
             }
         }
 
@@ -131,15 +125,12 @@
         /// </summary>
         public int Year
         {
-            get
-            {
-                return year;
-            }
+            get => year;
 
             set
             {
                 year = value;
-                RaisePropertyChangedEvent("Year");
+                this.OnPropertyChanged(nameof(this.Year));
             }
         }
 
