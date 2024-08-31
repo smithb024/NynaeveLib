@@ -1,8 +1,8 @@
-﻿using NynaeveLib.Messenger;
-using System;
-
-namespace TestsMessenger
+﻿namespace TestsMessenger
 {
+    using NynaeveLib.Messenger;
+    using System;
+
     /// <summary>
     /// Class used to receive message via the Messenger service.
     /// </summary>
@@ -11,7 +11,7 @@ namespace TestsMessenger
         /// <summary>
         /// The id of this receiver.
         /// </summary>
-        int id;
+        readonly int id;
 
         /// <summary>
         /// Initialises a new instance of the <see cref="Receiver"/> class.
@@ -26,12 +26,36 @@ namespace TestsMessenger
         }
 
         /// <summary>
+        /// Unregister this class from the messenger.
+        /// </summary>
+        public void UnRegisterMessage()
+        {
+            Messenger.Default.Unregister(this);
+        }
+
+        /// <summary>
+        /// Register this class to receive the <see cref="PrimaryMessage"/> on the messenger.
+        /// </summary>
+        public void RegisterToReceivePrimaryMessage()
+        {
+            Messenger.Default.Register<PrimaryMessage>(this, this.RunPrimaryMessage);
+        }
+
+        /// <summary>
+        /// Register this class to receive the <see cref="SecondaryMessage"/> on the messenger.
+        /// </summary>
+        public void RegisterToReceiveSecondaryMessage()
+        {
+            Messenger.Default.Register<SecondaryMessage>(this, this.RunSecondaryMessage);
+        }
+
+        /// <summary>
         /// A <see cref="PrimaryMessage"/> message has been recived from the messenger.
         /// </summary>
         /// <param name="message">The message</param>
         private void RunPrimaryMessage(PrimaryMessage message)
         {
-            Console.WriteLine($"{message.Message} Received by Receiver{id}");
+            Console.WriteLine($"{message.Message} Received by Receiver{this.id}");
         }
 
         /// <summary>
@@ -40,7 +64,7 @@ namespace TestsMessenger
         /// <param name="message">The message</param>
         private void RunSecondaryMessage(SecondaryMessage message)
         {
-            Console.WriteLine($"{message.Message} Received by Receiver{id}");
+            Console.WriteLine($"{message.Message} Received by Receiver{this.id}");
         }
     }
 }
