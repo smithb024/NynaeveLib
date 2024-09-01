@@ -2,8 +2,10 @@
 {
     using CommunityToolkit.Mvvm.ComponentModel;
     using System;
-    using System.ComponentModel;
 
+    /// <summary>
+    /// Generic view model base class. It uses Community Toolkit MVVM to provide the MVVM pattern.
+    /// </summary>
     public class ViewModelBase : ObservableRecipient, IViewModelBase
     {
         /// <summary>
