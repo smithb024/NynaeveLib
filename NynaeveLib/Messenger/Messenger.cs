@@ -289,7 +289,7 @@
         /// </summary>
         public void RequestCleanup()
         {
-            if (!isCleanupRegistered)
+            if (!this.isCleanupRegistered)
             {
                 Action cleanupAction = this.Cleanup;
 
