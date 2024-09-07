@@ -4,6 +4,9 @@
     using System.Linq;
     using NynaeveLib.ViewModel;
 
+    /// <summary>
+    /// View model object which handles a data.
+    /// </summary>
     public class DateType : ViewModelBase
     {
         /// <summary>
