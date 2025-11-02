@@ -101,6 +101,8 @@
     <Compile Include="Enumerations\FieldUpdatedType.cs" />
     <Compile Include="Enumerations\SexType.cs" />
     <Compile Include="ImageHelpers\GUIToImage.cs" />
+    <Compile Include="Json\JsonException.cs" />
+    <Compile Include="Json\JsonFileIo.cs" />
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="Messenger\IMessenger.cs" />
     <Compile Include="Messenger\IWeakAction.cs" />
